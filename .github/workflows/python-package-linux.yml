@@ -59,7 +59,7 @@ jobs:
     - name: Install extra dependencies
       if: runner.os == 'Linux'
       run: |
-        sudo playwright install-deps
+        playwright install-deps
     - name: Make sure pytest is working
       run: |
         echo "def test_a(): pass" > nothing.py
