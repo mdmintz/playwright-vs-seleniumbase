@@ -1,0 +1,138 @@
+name: CI Build 1 (Ubuntu)
+on:
+  schedule:
+    - cron: "26 * * * *"
+  push:
+    branches: [ master ]
+  pull_request:
+    branches:
+  workflow_dispatch:
+    branches:
+
+jobs:
+  build:
+
+    env:
+      PY_COLORS: "1"
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.13"]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip wheel setuptools
+        pip install -r requirements.txt
+    - name: Install Packages
+      run: |
+        pip install .
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        # Stop the build if there are flake8 issues
+        flake8 . --count --show-source --statistics --exclude=temp
+    - name: Install Chrome and Edge
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt install google-chrome-stable
+    - name: Check the console scripts interface (methods)
+      run: |
+        sbase methods
+    - name: Check the console scripts interface
+      run: |
+        seleniumbase
+    - name: Install drivers (chromedriver, chrome-headless-shell, playwright)
+      run: |
+        sbase get chromedriver
+        sbase get chs
+        playwright install
+    - name: Make sure pytest is working
+      run: |
+        echo "def test_1(): pass" > nothing.py
+        pytest nothing.py
+    - name: Get CPU count
+      run: |
+        echo "import os; print(os.cpu_count())" > get_cpu_count.py
+        python get_cpu_count.py
+    ##########
+    # Part 1/6: raw_sb_headless_launch.py x 3
+    - name: Run python examples/raw_sb_headless_launch.py (1)
+      run: |
+        python examples/raw_sb_headless_launch.py
+    - name: Run python examples/raw_sb_headless_launch.py (2)
+      run: |
+        python examples/raw_sb_headless_launch.py
+    - name: Run python examples/raw_sb_headless_launch.py (3)
+      run: |
+        python examples/raw_sb_headless_launch.py
+    ##########
+    # Part 2/6: raw_pw_headless_launch.py x 3
+    - name: Run python examples/raw_pw_headless_launch.py (1)
+      run: |
+        python examples/raw_pw_headless_launch.py
+    - name: Run python examples/raw_pw_headless_launch.py (2)
+      run: |
+        python examples/raw_pw_headless_launch.py
+    - name: Run python examples/raw_pw_headless_launch.py (3)
+      run: |
+        python examples/raw_pw_headless_launch.py
+    ##########
+    # Part 3/6: raw_sb_headless_flow.py x 3
+    - name: Run python examples/raw_sb_headless_flow.py (1)
+      run: |
+        python examples/raw_sb_headless_flow.py
+    - name: Run python examples/raw_sb_headless_flow.py (2)
+      run: |
+        python examples/raw_sb_headless_flow.py
+    - name: Run python examples/raw_sb_headless_flow.py (3)
+      run: |
+        python examples/raw_sb_headless_flow.py
+    ##########
+    # Part 4/6: raw_pw_headless_flow.py x 3
+    - name: Run python examples/raw_pw_headless_flow.py (1)
+      run: |
+        python examples/raw_pw_headless_flow.py
+    - name: Run python examples/raw_pw_headless_flow.py (2)
+      run: |
+        python examples/raw_pw_headless_flow.py
+    - name: Run python examples/raw_pw_headless_flow.py (3)
+      run: |
+        python examples/raw_pw_headless_flow.py
+    ##########
+    # Part 5/6: raw_sb_headless_multi.py x 3
+    - name: Run python examples/raw_sb_headless_multi.py (1)
+      run: |
+        python examples/raw_sb_headless_multi.py
+    - name: Run python examples/raw_sb_headless_multi.py (2)
+      run: |
+        python examples/raw_sb_headless_multi.py
+    - name: Run python examples/raw_sb_headless_multi.py (3)
+      run: |
+        python examples/raw_sb_headless_multi.py
+    ##########
+    # (Need to uninstall seleniumbase and install pytest-playwright for next part)
+    - name: Uninstall seleniumbase and install pytest-playwright
+      run: |
+        pip uninstall -y seleniumbase
+        pip install pytest-playwright
+    ##########
+    # Part 6/6: raw_pw_headless_multi.py x 3
+    - name: Run python examples/raw_pw_headless_multi.py (1)
+      run: |
+        python examples/raw_pw_headless_multi.py
+    - name: Run python examples/raw_pw_headless_multi.py (2)
+      run: |
+        python examples/raw_pw_headless_multi.py
+    - name: Run python examples/raw_pw_headless_multi.py (3)
+      run: |
+        python examples/raw_pw_headless_multi.py
