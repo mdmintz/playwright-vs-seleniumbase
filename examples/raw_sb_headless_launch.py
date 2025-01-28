@@ -8,7 +8,7 @@ def run(sb):
 
 @decorators.print_runtime("SeleniumBase headless launch")
 def main():
-    with SB(chs=True) as sb:
+    with SB(chs=True, pls="none") as sb:
         run(sb)
 
 
