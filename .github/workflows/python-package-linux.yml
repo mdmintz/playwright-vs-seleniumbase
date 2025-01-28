@@ -58,8 +58,12 @@ jobs:
         playwright install
     - name: Make sure pytest is working
       run: |
-        echo "def test_1(): pass" > nothing.py
+        echo "def test_a(): pass" > nothing.py
         pytest nothing.py
+    - name: Make sure pytest with sb is working
+      run: |
+        echo "def test_b(sb): pass" > verify_sb.py
+        pytest verify_sb.py --chs
     - name: Get CPU count
       run: |
         echo "import os; print(os.cpu_count())" > get_cpu_count.py
