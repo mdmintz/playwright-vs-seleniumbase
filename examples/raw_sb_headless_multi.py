@@ -1,5 +1,5 @@
 from seleniumbase import BaseCase
-BaseCase.main(__name__, __file__, "--rs", "--chs", "--sjw", "--pls=none")
+BaseCase.main(__name__, __file__, "--rs", "--chs", "--headless", "--sjw")
 
 
 def test_1(sb):
