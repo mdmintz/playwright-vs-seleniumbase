@@ -1,5 +1,7 @@
-from seleniumbase import BaseCase
-BaseCase.main(__name__, __file__, "--rs", "--chs", "--headless", "--sjw")
+import pytest
+
+if __name__ == "__main__":
+    pytest.main([__file__, "--rs", "--chs", "--sjw"])
 
 
 def test_1(sb):
