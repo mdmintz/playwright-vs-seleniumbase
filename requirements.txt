@@ -1,0 +1,2 @@
+playwright>=1.49.1
+seleniumbase>=4.34.3
