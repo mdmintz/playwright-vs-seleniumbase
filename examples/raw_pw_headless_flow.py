@@ -24,7 +24,7 @@ def run(page):
 @decorators.print_runtime("Playwright flow with launch")
 def main():
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
+        browser = playwright.chromium.launch()
         context = browser.new_context()
         page = context.new_page()
         run(page)
