@@ -1,5 +1,7 @@
 # playwright-vs-seleniumbase
 
+<img src="https://seleniumbase.github.io/other/riding_browsers_3.jpg" title="Browser Racing" width="488">
+
 ### Comparing Playwright to SeleniumBase in terms of performance.
 
 Stats are based on median runtimes (out of 3) for the following examples from:
