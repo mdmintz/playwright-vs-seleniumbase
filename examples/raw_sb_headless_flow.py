@@ -16,7 +16,7 @@ def run(sb):
 
 @decorators.print_runtime("SeleniumBase flow with launch")
 def main():
-    with SB(chs=True, pls="none", sjw=True) as sb:
+    with SB(chs=True, pls="eager", sjw=True) as sb:
         run(sb)
 
 
