@@ -40,6 +40,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Topic :: Internet",
         "Topic :: Software Development",
         "Topic :: Software Development :: Quality Assurance",
@@ -51,8 +52,8 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        'playwright>=1.49.1',
-        'seleniumbase>=4.37.6',
+        'playwright>=1.52.0',
+        'seleniumbase>=4.39.4',
         ],
     packages=[
         ],

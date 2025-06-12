@@ -1,2 +1,2 @@
-playwright>=1.49.1
-seleniumbase>=4.37.6
+playwright>=1.52.0
+seleniumbase>=4.39.4
