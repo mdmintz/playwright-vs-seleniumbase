@@ -53,7 +53,7 @@ setup(
     python_requires='>=3.8',
     install_requires=[
         'playwright>=1.52.0',
-        'seleniumbase>=4.39.4',
+        'seleniumbase>=4.40.8',
         ],
     packages=[
         ],
