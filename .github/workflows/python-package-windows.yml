@@ -53,8 +53,8 @@ jobs:
         seleniumbase
     - name: Install drivers (chromedriver, chrome-headless-shell, playwright)
       run: |
-        sbase get chromedriver 133
-        sbase get chs 133
+        sbase get chromedriver
+        sbase get chs
         playwright install
     - name: Install extra dependencies
       if: runner.os == 'Linux'
