@@ -1,16 +1,16 @@
+import timeit
 from seleniumbase import SB
-from seleniumbase import decorators
 
 
 def run(sb):
     print('Start page = "%s"' % sb.driver.current_url)
 
 
-@decorators.print_runtime("SeleniumBase headless launch")
 def main():
     with SB(chs=True, pls="none") as sb:
         run(sb)
 
 
 if __name__ == "__main__":
-    main()
+    runtime = timeit.timeit(stmt="main()", globals=globals(), number=1)
+    print("{SeleniumBase headless launch} ran for %.3f seconds" % runtime)

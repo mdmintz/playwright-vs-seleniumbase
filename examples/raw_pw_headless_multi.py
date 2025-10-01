@@ -1,7 +1,7 @@
 """
 Note:
 pytest-playwright and seleniumbase cannot be installed together.
-(They have overlapping pytest args)
+They have overlapping pytest args: (Eg. "--browser")
 Pick one to install, and uninstall the other.
 
 (This script uses pytest-playwright)

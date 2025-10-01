@@ -1,3 +1,11 @@
+"""
+Note:
+pytest-playwright and seleniumbase cannot be installed together.
+They have overlapping pytest args: (Eg. "--browser")
+Pick one to install, and uninstall the other.
+
+(This script uses seleniumbase)
+"""
 import pytest
 
 if __name__ == "__main__":

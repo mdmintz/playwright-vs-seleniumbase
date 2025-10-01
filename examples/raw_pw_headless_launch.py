@@ -1,12 +1,11 @@
+import timeit
 from playwright.sync_api import sync_playwright
-from seleniumbase import decorators
 
 
 def run(page):
     print('Start page = "%s"' % page.url)
 
 
-@decorators.print_runtime("Playwright headless launch")
 def main():
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch()
@@ -18,4 +17,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    runtime = timeit.timeit(stmt="main()", globals=globals(), number=1)
+    print("{Playwright headless launch} ran for %.3f seconds" % runtime)
