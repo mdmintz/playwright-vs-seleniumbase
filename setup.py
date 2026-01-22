@@ -49,10 +49,10 @@ setup(
         "Topic :: Software Development :: Testing :: Traffic Generation",
         "Topic :: Utilities",
     ],
-    python_requires='>=3.8',
+    python_requires='>=3.9',
     install_requires=[
-        'playwright>=1.55.0',
-        'seleniumbase>=4.44.17',
+        'playwright>=1.57.0',
+        'seleniumbase>=4.46.0',
         ],
     packages=[
         ],
